@@ -2,15 +2,15 @@
   "name": "jait-fe-angular",
   "version": "0.1.0",
   "scripts": {
-      "ng": "ng",
-      "build": "ng build --prod",
-      "test": "ng test",
-      "lint": "ng lint",
-      "e2e": "ng e2e",
-      "startdev": "ng serve --port 4300 --ec true",
-      "heroku-prebuild": "npm install -g http-server",
-      "heroku-postbuild": "ng build --env=prod",
-      "start": "http-server dist/"
+    "ng": "ng",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "startdev": "ng serve --port 4300 --ec true",
+    "heroku-prebuild": "npm install -g http-server",
+    "heroku-postbuild": "ng build --env=prod",
+    "start": "http-server dist/"
   },
   "private": true,
   "engines": {
