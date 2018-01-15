@@ -13,10 +13,6 @@
     "start": "http-server dist/"
   },
   "private": true,
-  "engines": {
-    "node": ">= 6.9.0",
-    "npm": ">= 3.0.0"
-  },
   "dependencies": {
     "@angular/cdk": "5.0.1",
     "@angular/cli": "1.6.0",
