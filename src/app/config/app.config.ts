@@ -9,10 +9,10 @@ export const AppConfig: IAppConfig = {
     heroes: 'heroes',
     error404: '404',
     dashboard: {
-      home: 'home',,
-      login: 'login',
-      register: 'register'
-    }
+      home: 'home'  
+    },
+    login: 'login',
+    register: 'register'
   },
   endpoints: {
     heroes: 'https://nodejs-example-app.herokuapp.com/heroes'

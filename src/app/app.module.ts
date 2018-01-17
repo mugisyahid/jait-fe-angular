@@ -19,6 +19,8 @@ import {TimingInterceptor} from './shared/interceptors/timing.interceptor';
 import {SampleModule} from 'angular-example-library';
 
 import { HomeComponent } from './dashboard/home/home.component';
+import { LoginComponent } from './dashboard/login/login.component';
+import { RegisterComponent } from './dashboard/register/register.component';
 
 @NgModule({
   imports: [
@@ -44,7 +46,9 @@ import { HomeComponent } from './dashboard/home/home.component';
   ],
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [
     {provide: APP_CONFIG, useValue: AppConfig},
