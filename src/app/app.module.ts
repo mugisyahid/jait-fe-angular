@@ -13,11 +13,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from './app.translate.factory';
-import {HeroTopComponent} from './heroes/hero-top/hero-top.component';
 import {ProgressBarService} from './core/progress-bar.service';
 import {ProgressInterceptor} from './shared/interceptors/progress.interceptor';
 import {TimingInterceptor} from './shared/interceptors/timing.interceptor';
 import {SampleModule} from 'angular-example-library';
+
+import { HomeComponent } from './dashboard/home/home.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,7 @@ import {SampleModule} from 'angular-example-library';
   ],
   declarations: [
     AppComponent,
-    HeroTopComponent
+    HomeComponent
   ],
   providers: [
     {provide: APP_CONFIG, useValue: AppConfig},

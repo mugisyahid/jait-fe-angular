@@ -1,13 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {HeroTopComponent} from './heroes/hero-top/hero-top.component';
 import {AppConfig} from './config/app.config';
+
+import {HomeComponent} from './dashboard/home/home.component';
 import {Error404Component} from './core/error404/error-404.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
-  {path: '', component: HeroTopComponent},
+  {path: '', component: HomeComponent},
+
+  {path: AppConfig.routes.dashboard.home, loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
+  
   {path: AppConfig.routes.heroes, loadChildren: 'app/heroes/heroes.module#HeroesModule'},
   {path: AppConfig.routes.error404, component: Error404Component},
 
