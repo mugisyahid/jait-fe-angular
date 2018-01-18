@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AppConfig} from '../../config/app.config';
 import {LoggerService} from '../../core/logger.service';
@@ -20,7 +20,7 @@ export class LoginComponent {
   constructor(private authService: AuthService, private formBuilder: FormBuilder) { 
 
     this.loginForm = this.formBuilder.group({
-      'name': ['', [Validators.required]],
+      'username': ['', [Validators.required]],
       'password': ['', [Validators.required]]
     });
 

@@ -1,25 +1,25 @@
 <h2 class="section-title">{{ 'login' | translate }}</h2>
 
-<div class="center">
-  <form>
-      <mat-input-container class="input-container">
-          <input matInput type="text"
-                  placeholder="{{'name' | translate}}"
-                  />
-      </mat-input-container>
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+        <mat-input-container class="input-container">
+            <input matInput type="text"
+                   placeholder="{{'name' | translate}}"
+                   formControlName="username">
+        </mat-input-container>
 
-      <mat-input-container class="input-container">
-          <input matInput type="text"
-                  placeholder="{{'password' | translate}}"
-                  />
-      </mat-input-container>
+        <mat-input-container class="input-container">
+            <input matInput type="text"
+                   placeholder="{{'password' | translate}}"
+                   formControlName="password">
+        </mat-input-container>
 
-      <button mat-raised-button type="submit">
-          {{'login' | translate}}
-      </button>
+        <button mat-raised-button type="submit" [disabled]="!loginForm.valid">
+            {{'login' | translate}}
+        </button>
 
-      <div *ngIf="error">{{error | translate}}</div>
-  </form>
+        <div *ngIf="error">{{error | translate}}</div>
+    </form>
 </div>
 <div class="clear"></div>
 
