@@ -1,5 +1,7 @@
 {
   "home": "Inicio",
+  "login": "Login",
+  "register": "Daftar",
   "heroesList": "Lista de heróis",
   "angularExampleApp": "Aplicação exemplo de angular",
   "language": "Idioma",

@@ -1,5 +1,7 @@
 {
   "home": "Home",
+  "login": "Login",
+  "register": "Register",
   "heroesList": "Heroes list",
   "angularExampleApp": "Angular Example App",
   "language": "Language",
