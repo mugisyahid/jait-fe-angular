@@ -16,6 +16,8 @@ const routes: Routes = [
   {path: AppConfig.routes.login, component: LoginComponent},
   {path: AppConfig.routes.register, component: RegisterComponent},
   
+  {path: AppConfig.routes.dashboard.home, loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
+
   {path: AppConfig.routes.heroes, loadChildren: 'app/heroes/heroes.module#HeroesModule'},
   {path: AppConfig.routes.error404, component: Error404Component},
 

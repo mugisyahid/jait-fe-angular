@@ -2,8 +2,10 @@
   "home": "Home",
   "login": "Login",
   "register": "Register",
+  "password" : "Password",
   "heroesList": "Heroes list",
-  "angularExampleApp": "Angular Example App",
+  "appName": "Tukang Jait",
+
   "language": "Language",
   "orange": "Orange",
   "yellow": "Yellow",

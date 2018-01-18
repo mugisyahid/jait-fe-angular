@@ -15,7 +15,9 @@ export const AppConfig: IAppConfig = {
     register: 'register'
   },
   endpoints: {
-    heroes: 'https://nodejs-example-app.herokuapp.com/heroes'
+    heroes: 'https://nodejs-example-app.herokuapp.com/heroes',
+    login: '/api/login',
+    register: '/register'
   },
   votesLimit: 3,
   topHeroesLimit: 4,
