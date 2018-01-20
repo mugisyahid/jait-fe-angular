@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Login } from './shared/login.model';
-
 import { LoginService } from './shared/login.service';
-
 
 @Component({
     selector: 'app-login',

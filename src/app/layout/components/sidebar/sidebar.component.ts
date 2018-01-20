@@ -13,10 +13,10 @@ export class SidebarComponent {
     pushRightClass: string = 'push-right';
 
     constructor(private translate: TranslateService, public router: Router) {
-        this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
+        this.translate.addLangs(['en', 'id']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
-        this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de/) ? browserLang : 'en');
+        this.translate.use(browserLang.match(/en|id/) ? browserLang : 'en');
 
         this.router.events.subscribe(val => {
             if (

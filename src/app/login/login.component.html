@@ -6,14 +6,14 @@
             <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" placeholder="Username" formControlName="username">
+                        <input type="text" class="form-control input-underline input-lg" placeholder="Email" formControlName="username">
                     </div>
 
                     <div class="form-group">
                         <input type="password" class="form-control input-underline input-lg" placeholder="Password" formControlName="password">
                     </div>
                 </div>
-                <button class="btn rounded-btn" type="submit"> Log in </button>
+                <button class="btn rounded-btn" type="submit" [disabled]="!loginForm.valid"> Log in </button>
                 &nbsp;
                 <button class="btn rounded-btn" [routerLink]="['/signup']"> Register </button>
                 <div *ngIf="error">{{error}}</div>
