@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
+import { AuthGuard } from '../../../shared/guard';
+
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -10,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router) {
 
         this.translate.addLangs(['en', 'id']);
         this.translate.setDefaultLang('en');
@@ -28,7 +31,7 @@ export class HeaderComponent implements OnInit {
         });
     }
 
-    ngOnInit() {}
+    ngOnInit() { }
 
     isToggled(): boolean {
         const dom: Element = document.querySelector('body');
@@ -46,7 +49,7 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        this.authGuard.logout()
     }
 
     changeLang(language: string) {

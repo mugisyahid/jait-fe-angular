@@ -6,12 +6,12 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import {APP_CONFIG, AppConfig} from './config/app.config';
+import { APP_CONFIG, AppConfig } from './config/app.config';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthGuard } from './shared';
-
+import { AuthGuard, RequestInterceptor } from './shared';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
     // for development
@@ -35,8 +35,16 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     declarations: [AppComponent],
     providers: [
-        {provide: APP_CONFIG, useValue: AppConfig},
+        {
+            provide: APP_CONFIG,
+            useValue: AppConfig
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true
+        },
         AuthGuard],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
