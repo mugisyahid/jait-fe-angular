@@ -13,9 +13,9 @@
                         <input type="password" class="form-control input-underline input-lg" placeholder="Password" formControlName="password">
                     </div>
                 </div>
-                <button class="btn rounded-btn" type="submit" [disabled]="!loginForm.valid"> Log in </button>
+                <button class="btn rounded-btn" type="submit" [disabled]="!loginForm.valid"> {{'Login'}} </button>
                 &nbsp;
-                <button class="btn rounded-btn" [routerLink]="['/signup']"> Register </button>
+                <button class="btn rounded-btn" [routerLink]="['/signup']"> {{'Register'}} </button>
                 <div *ngIf="error">{{error}}</div>
             </form>
         </div>

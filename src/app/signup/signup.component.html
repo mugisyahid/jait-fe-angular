@@ -3,25 +3,26 @@
         <div class="col-md-4">
             <img class="user-avatar" src="assets/images/logo.png" width="150px" />
             <h1>Tukang Jait</h1>
-            <form role="form">
+            <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name" formControlName="name">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email">
+                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email" formControlName="username">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password" formControlName="password">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repeat Password">
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Register </a>&nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+                <button class="btn rounded-btn" type="submit" [disabled]="!registerForm.valid"> {{'Register'}} </button>
+                <button class="btn rounded-btn" [routerLink]="['/login']"> {{ 'Login'}} </button>
+                <div *ngIf="error">{{error}}</div>
             </form>
         </div>
     </div>

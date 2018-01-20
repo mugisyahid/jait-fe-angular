@@ -28,5 +28,9 @@
     "Pending Task" : "Tâche en attente",
     "In queue" : "Dans la queue",
     "Mail" : "Courrier",
-    "View All" : "Voir tout"
+    "View All" : "Voir tout",
+
+    "Register": "Daftar",
+    "Login": "Masuk"
+
 }
