@@ -1,38 +1,20 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-
-import {AppConfig} from './config/app.config';
-
-import {HomeComponent} from './dashboard/home/home.component';
-import {LoginComponent} from './dashboard/login/login.component'
-import {RegisterComponent} from './dashboard/register/register.component'
-
-import {Error404Component} from './core/error404/error-404.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { AuthGuard } from './shared';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/', pathMatch: 'full'},
-  
-  {path: '', component: HomeComponent},
-  {path: AppConfig.routes.login, component: LoginComponent},
-  {path: AppConfig.routes.register, component: RegisterComponent},
-  
-  {path: AppConfig.routes.dashboard.home, loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
-
-  {path: AppConfig.routes.heroes, loadChildren: 'app/heroes/heroes.module#HeroesModule'},
-  {path: AppConfig.routes.error404, component: Error404Component},
-
-  // otherwise redirect to 404
-  {path: '**', redirectTo: '/' + AppConfig.routes.error404}
+    { path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },
+    { path: 'login', loadChildren: './login/login.module#LoginModule' },
+    { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
+    { path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule' },
+    { path: 'access-denied', loadChildren: './access-denied/access-denied.module#AccessDeniedModule' },
+    { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
+    { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
-
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
