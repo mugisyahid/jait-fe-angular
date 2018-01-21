@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { Router } from '@angular/router';
 
-import * as moment from 'moment'; // add this 1 of 4
+import * as moment from 'moment';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -43,5 +43,9 @@ export class AuthGuard implements CanActivate {
         const expiration = localStorage.getItem("expires_in");
         const expiresAt = JSON.parse(expiration);
         return moment(expiresAt);
+    }
+
+    getUsername(){
+        return localStorage.getItem('username')
     }
 }

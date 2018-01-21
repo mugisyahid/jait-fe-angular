@@ -32,6 +32,10 @@ export class SidebarComponent {
         });
     }
 
+    toProfile(){
+        this.router.navigateByUrl('/profile')
+    }
+
     eventCalled() {
         this.isActive = !this.isActive;
     }

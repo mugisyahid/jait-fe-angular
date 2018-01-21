@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { environment } from '../../../environments/environment';
-import { AppConfig } from '../../config/app.config';
+import { environment } from '../../../../environments/environment';
+import { AppConfig } from '../../../config/app.config';
 
 
-import { Login } from './login.model';
+import { User } from './user.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class LoginService {
+export class UserService {
   private headers: HttpHeaders;
-  private loginUrl: string;
+  private userUrl: string;
 
   private handleError(error: any) {
     if (error instanceof Response) {
@@ -23,19 +23,21 @@ export class LoginService {
 
 
   constructor(private http: HttpClient) {
-    this.loginUrl = environment.url + AppConfig.endpoints.api.login;
+    this.userUrl = environment.url + AppConfig.endpoints.admin.user;
     this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   }
-
-  login(l: any): Observable<Login> {
+  
+  getProfile(username: string): Observable<User> {
     return this.http
-      .post(this.loginUrl, JSON.stringify({
-        username: l.username,
-        password: l.password
+      .post(this.userUrl+AppConfig.endpoints.admin.profile, JSON.stringify({
+        username: username
       }), { headers: this.headers })
       .map(response => {
         return response;
       })
       .catch(error => this.handleError(error));
   }
+  
+
+
 }

@@ -23,7 +23,7 @@ export class RegisterService {
 
 
     constructor(private http: HttpClient) {
-        this.registerUrl = environment.url + AppConfig.endpoints.register;
+        this.registerUrl = environment.url + AppConfig.endpoints.api.register;
         this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
 

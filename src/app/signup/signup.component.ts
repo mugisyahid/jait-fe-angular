@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
     constructor(public router: Router, private registerService: RegisterService, private formBuilder: FormBuilder) {
         this.registerForm = this.formBuilder.group({
             'name': ['', [Validators.required]],
-            'username': ['', [Validators.required]],
+            'username': ['', [Validators.required, Validators.email]],
             'password': ['', [Validators.required]]
         })
     }

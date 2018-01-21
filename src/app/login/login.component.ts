@@ -14,19 +14,19 @@ import { AuthGuard } from '../shared/index';
     animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
-    
+
     private loginForm: FormGroup
     private error: String
 
     constructor(public router: Router, private loginService: LoginService, private formBuilder: FormBuilder, private authGuard: AuthGuard) {
 
         this.loginForm = this.formBuilder.group({
-            'username': ['', [Validators.required]],
+            'username': ['', [Validators.required, Validators.email]],
             'password': ['', [Validators.required]]
-          });
+        });
     }
 
-    ngOnInit() {}
+    ngOnInit() { }
 
 
     login(l: Login) {
@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit {
             this.authGuard.setSession(user)
             this.router.navigateByUrl('/dashboard');
         }, (response: Response) => {
-          if (response.status != 200) {
-            this.error = 'errorHasOcurred';
-          }
+            if (response.status != 200) {
+                this.error = 'errorHasOcurred';
+            }
         });
     }
 }

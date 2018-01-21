@@ -13,6 +13,8 @@ import { AuthGuard } from '../../../shared/guard';
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
 
+    name: String
+
     constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router) {
 
         this.translate.addLangs(['en', 'id']);
@@ -29,6 +31,8 @@ export class HeaderComponent implements OnInit {
                 this.toggleSidebar();
             }
         });
+
+        this.name = authGuard.getUsername()  
     }
 
     ngOnInit() { }
