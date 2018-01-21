@@ -7,6 +7,7 @@ const routes: Routes = [
     //api
     { path: 'login', loadChildren: './login/login.module#LoginModule' },
     { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
+    // { path: 'product', loadChildren: './layout/product/product.module#ProductModule' },
 
     //secure
     { path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },

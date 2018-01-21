@@ -10,7 +10,8 @@ export const AppConfig: IAppConfig = {
   endpoints: {
     api: {
       login: '/api/login',
-      register: '/register'
+      register: '/register',
+      product: '/api/product'
     },
     admin:{
       user: '/admin/user',
