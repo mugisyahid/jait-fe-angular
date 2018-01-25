@@ -16,6 +16,11 @@
 .settings/
 *.sublime-workspace
 
+# IntelliJ project files
+.idea
+*.iml
+out
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

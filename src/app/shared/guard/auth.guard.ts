@@ -24,11 +24,16 @@ export class AuthGuard implements CanActivate {
         localStorage.setItem('expires_in', JSON.stringify(expiresAt.valueOf()));
     }
 
+    public setUserId(userId){
+        localStorage.setItem('user_id', userId);
+    }
+
     logout() {
         localStorage.removeItem("username");
         localStorage.removeItem("token");
         localStorage.removeItem("refresh_token");
         localStorage.removeItem("expires_in");
+        localStorage.removeItem("user_id");
     }
 
     public isLoggedIn() {
@@ -46,6 +51,10 @@ export class AuthGuard implements CanActivate {
     }
 
     getUsername(){
-        return localStorage.getItem('username')
+        return localStorage.getItem('username');
+    }
+
+    getUserId(){
+        return localStorage.getItem('user_id');
     }
 }

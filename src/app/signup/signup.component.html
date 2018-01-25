@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <button class="btn rounded-btn" type="submit" [disabled]="!registerForm.valid"> {{'Register'}} </button>
-                <button class="btn rounded-btn" [routerLink]="['/login']"> {{ 'Login'}} </button>
+                <a class="btn rounded-btn" [routerLink]="['/login']"> {{ 'Login'}} </a>                                   
                 <div *ngIf="error">{{error}}</div>
             </form>
         </div>

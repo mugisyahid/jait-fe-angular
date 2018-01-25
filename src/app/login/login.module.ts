@@ -7,6 +7,7 @@ import { LoginComponent } from './login.component';
 
 import { LoginService } from './shared/login.service';
 import { AuthGuard } from '../shared/index';
+import { UserService } from '../layout/user/shared/user.service';
 
 
 @NgModule({
@@ -16,6 +17,6 @@ import { AuthGuard } from '../shared/index';
         LoginRoutingModule
     ],
     declarations: [LoginComponent],
-    providers: [LoginService, AuthGuard]
+    providers: [LoginService, UserService, AuthGuard]
 })
 export class LoginModule { }
