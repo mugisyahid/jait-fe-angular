@@ -1,4 +1,4 @@
 export interface IAppConfig {
-  routes: any;
-  endpoints: any;
+    routes: any;
+    endpoints: any;
 }

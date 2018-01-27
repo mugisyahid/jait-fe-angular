@@ -1,15 +1,25 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { UserRoutingModule } from './user-routing.module';
-import { UserComponent } from './user.component';
-import { PageHeaderModule } from './../../shared';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserService } from './shared/user.service';
+import {UserRoutingModule} from './user-routing.module';
+import {UserComponent} from './user.component';
+import {PageHeaderModule} from './../../shared';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {UserService} from './shared/user.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
-    imports: [CommonModule, UserRoutingModule, PageHeaderModule],
+    imports: [CommonModule,
+        UserRoutingModule,
+        PageHeaderModule,
+        FormsModule,
+        TranslateModule,
+        NgbModule.forRoot(),
+        ReactiveFormsModule],
     declarations: [UserComponent, UserProfileComponent],
     providers: [UserService]
 })
-export class UserModule { }
+export class UserModule {
+}

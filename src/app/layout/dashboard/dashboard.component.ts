@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '../../router.animations';
+import {Component, OnInit} from '@angular/core';
+import {routerTransition} from '../../router.animations';
 
 @Component({
     selector: 'app-dashboard',
@@ -52,7 +52,8 @@ export class DashboardComponent implements OnInit {
         );
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
 
     public closeAlert(alert: any) {
         const index: number = this.alerts.indexOf(alert);

@@ -1,13 +1,13 @@
-import { ProductModule } from './product.module';
+import {ProductModule} from './product.module';
 
 describe('TablesModule', () => {
-  let tablesModule: ProductModule;
+    let tablesModule: ProductModule;
 
-  beforeEach(() => {
-    tablesModule = new ProductModule();
-  });
+    beforeEach(() => {
+        tablesModule = new ProductModule();
+    });
 
-  it('should create an instance', () => {
-    expect(tablesModule).toBeTruthy();
-  });
+    it('should create an instance', () => {
+        expect(tablesModule).toBeTruthy();
+    });
 });

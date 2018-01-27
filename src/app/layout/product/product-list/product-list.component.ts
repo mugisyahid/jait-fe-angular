@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { Product } from '../shared/product.model';
-import { ProductService } from '../shared/product.service';
-
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
+import {Product} from '../shared/product.model';
+import {ProductService} from '../shared/product.service';
 
 
 @Component({
@@ -13,7 +12,7 @@ import { ProductService } from '../shared/product.service';
 })
 export class ProductListComponent {
 
-    products: Product[]
+    products: Product[];
 
     constructor(private productService: ProductService, private translate: TranslateService, public router: Router) {
         this.translate.addLangs(['en', 'id']);
@@ -21,9 +20,9 @@ export class ProductListComponent {
         const browserLang = this.translate.getBrowserLang();
         this.translate.use(browserLang.match(/en|id/) ? browserLang : 'en');
 
-        this.productService.getProducts().subscribe((products:Product[]) => {
-            this.products = products
-        })
+        this.productService.getProducts().subscribe((products: Product[]) => {
+            this.products = products;
+        });
 
     }
 

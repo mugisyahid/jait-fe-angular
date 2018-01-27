@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { UserComponent } from './user.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {UserComponent} from './user.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
 
 const routes: Routes = [
     {
         path: '', component: UserComponent,
         children: [
-            { path: 'profile', component: UserProfileComponent }
+            {path: 'profile', component: UserProfileComponent}
         ]
     }
 ];

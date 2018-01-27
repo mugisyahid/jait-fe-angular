@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '../../router.animations';
+import {Component, OnInit} from '@angular/core';
+import {routerTransition} from '../../router.animations';
 
 @Component({
     selector: 'app-user',
@@ -8,7 +8,9 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class UserComponent implements OnInit {
-    constructor() {}
+    constructor() {
+    }
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
 }

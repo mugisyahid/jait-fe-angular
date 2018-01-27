@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import {Component, OnInit} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
-import { AuthGuard } from '../../../shared/guard';
+import {AuthGuard} from '../../../shared/guard';
 
 
 @Component({
@@ -11,9 +11,9 @@ import { AuthGuard } from '../../../shared/guard';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-    pushRightClass: string = 'push-right';
+    pushRightClass = 'push-right';
 
-    name: String
+    name: string;
 
     constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router) {
 
@@ -32,10 +32,11 @@ export class HeaderComponent implements OnInit {
             }
         });
 
-        this.name = authGuard.getUsername()  
+        this.name = authGuard.getUsername();
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+    }
 
     isToggled(): boolean {
         const dom: Element = document.querySelector('body');
@@ -53,7 +54,7 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        this.authGuard.logout()
+        this.authGuard.logout();
     }
 
     changeLang(language: string) {

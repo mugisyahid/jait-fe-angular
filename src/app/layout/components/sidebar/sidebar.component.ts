@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import {Component} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
 
-import { AuthGuard } from '../../../shared/guard';
+import {AuthGuard} from '../../../shared/guard';
 
 
 @Component({
@@ -32,8 +32,8 @@ export class SidebarComponent {
         });
     }
 
-    toProfile(){
-        this.router.navigateByUrl('/profile')
+    toProfile() {
+        this.router.navigateByUrl('/profile');
     }
 
     eventCalled() {
@@ -68,6 +68,6 @@ export class SidebarComponent {
     }
 
     onLoggedout() {
-        this.authGuard.logout()
+        this.authGuard.logout();
     }
 }

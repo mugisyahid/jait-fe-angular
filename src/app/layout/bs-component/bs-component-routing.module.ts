@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { BsComponentComponent } from './bs-component.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {BsComponentComponent} from './bs-component.component';
 
 const routes: Routes = [
     {
@@ -13,4 +13,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class BsComponentRoutingModule {}
+export class BsComponentRoutingModule {
+}

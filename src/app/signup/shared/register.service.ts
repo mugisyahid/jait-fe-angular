@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { environment } from '../../../environments/environment';
-import { AppConfig } from '../../config/app.config';
+import {environment} from '../../../environments/environment';
+import {AppConfig} from '../../config/app.config';
 
 
-import { Register } from './register.model';
-import { Observable } from 'rxjs/Observable';
+import {Register} from './register.model';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
@@ -14,17 +14,9 @@ export class RegisterService {
     private headers: HttpHeaders;
     private registerUrl: string;
 
-    private handleError(error: any) {
-        if (error instanceof Response) {
-            return Observable.throw(error.json()['error'] || 'backend server error');
-        }
-        return Observable.throw(error || 'backend server error');
-    }
-
-
     constructor(private http: HttpClient) {
         this.registerUrl = environment.url + AppConfig.endpoints.api.register;
-        this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        this.headers = new HttpHeaders({'Content-Type': 'application/json'});
     }
 
     register(l: any): Observable<Register> {
@@ -38,12 +30,19 @@ export class RegisterService {
                 accountExpired: false,
                 accountLocked: false,
                 passwordExpired: false,
-                remark: "new user",
-                roles: ["ROLE_CUSTOMER"]
-            }), { headers: this.headers })
+                remark: 'new user',
+                roles: ['ROLE_CUSTOMER']
+            }), {headers: this.headers})
             .map(response => {
                 return response;
             })
             .catch(error => this.handleError(error));
+    }
+
+    private handleError(error: any) {
+        if (error instanceof Response) {
+            return Observable.throw(error.json()['error'] || 'backend server error');
+        }
+        return Observable.throw(error || 'backend server error');
     }
 }

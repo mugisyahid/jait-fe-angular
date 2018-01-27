@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {CanActivate, Router} from '@angular/router';
 
 import * as moment from 'moment';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-    constructor(private router: Router) { }
+    constructor(private router: Router) {
+    }
 
     canActivate() {
         if (this.isLoggedIn()) {
@@ -24,16 +24,16 @@ export class AuthGuard implements CanActivate {
         localStorage.setItem('expires_in', JSON.stringify(expiresAt.valueOf()));
     }
 
-    public setUserId(userId){
+    public setUserId(userId) {
         localStorage.setItem('user_id', userId);
     }
 
     logout() {
-        localStorage.removeItem("username");
-        localStorage.removeItem("token");
-        localStorage.removeItem("refresh_token");
-        localStorage.removeItem("expires_in");
-        localStorage.removeItem("user_id");
+        localStorage.removeItem('username');
+        localStorage.removeItem('token');
+        localStorage.removeItem('refresh_token');
+        localStorage.removeItem('expires_in');
+        localStorage.removeItem('user_id');
     }
 
     public isLoggedIn() {
@@ -45,16 +45,16 @@ export class AuthGuard implements CanActivate {
     }
 
     getExpiration() {
-        const expiration = localStorage.getItem("expires_in");
+        const expiration = localStorage.getItem('expires_in');
         const expiresAt = JSON.parse(expiration);
         return moment(expiresAt);
     }
 
-    getUsername(){
+    getUsername() {
         return localStorage.getItem('username');
     }
 
-    getUserId(){
+    getUserId() {
         return localStorage.getItem('user_id');
     }
 }

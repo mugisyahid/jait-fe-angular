@@ -1,31 +1,61 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { AuthGuard } from '../../../shared/index';
-import { UserService } from '../shared/user.service';
-import { User } from '../shared/user.model';
-
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
+import {AuthGuard} from '../../../shared/index';
+import {UserService} from '../shared/user.service';
+import {User} from '../shared/user.model';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {routerTransition} from '../../../router.animations';
+import {Gender} from '../shared/gender.model';
 
 
 @Component({
     selector: 'app-user-profile',
     templateUrl: './user-profile.component.html',
-    styleUrls: ['./user-profile.component.scss']
+    styleUrls: ['./user-profile.component.scss'],
+    animations: [routerTransition()]
 })
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit {
+    user: User;
+    userForm: FormGroup;
+    error: String;
+    selectedGender: Gender;
+    genders = [
+        new Gender('MALE', 'Male'),
+        new Gender('FEMALE', 'Female')
+    ];
 
-    user: User
-
-    constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router, private userService: UserService) {
+    constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router,
+                private userService: UserService, private formBuilder: FormBuilder) {
         this.translate.addLangs(['en', 'id']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
         this.translate.use(browserLang.match(/en|id/) ? browserLang : 'en');
 
-        this.userService.getProfile(this.authGuard.getUsername()).subscribe((user:User) =>{
-            this.user = user
-            //set id?
-        })
+        this.userForm = this.formBuilder.group({
+            'name': ['', [Validators.required]],
+            'username': ['', [Validators.required, Validators.email]],
+            'gender': ['', []],
+            'phone': ['', []],
+            'about': ['', []]
+            // 'password': ['', [Validators.required]]
+        });
+
+        this.userService.getProfile(this.authGuard.getUsername()).subscribe((user: User) => {
+            this.user = user;
+            if (this.user.gender === 'MALE') {
+                this.selectedGender = this.genders[0];
+            } else {
+                this.selectedGender = this.genders[1];
+            }
+        });
+    }
+
+    ngOnInit() {
+
+    }
+
+    update(u: User) {
 
     }
 
