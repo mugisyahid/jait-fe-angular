@@ -4,17 +4,18 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {AppConfig} from '../../../config/app.config';
 
-
 import {User} from './user.model';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import {AuthGuard} from '../../../shared/guard';
+
 
 @Injectable()
 export class UserService {
     private headers: HttpHeaders;
     private userUrl: string;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private authGuard: AuthGuard) {
         this.userUrl = environment.url + AppConfig.endpoints.admin.user;
         this.headers = new HttpHeaders({'Content-Type': 'application/json'});
     }
@@ -30,7 +31,19 @@ export class UserService {
             .catch(error => this.handleError(error));
     }
 
-    updateProfile(u: any): Observable<any> {
+    updateProfile(u: User): Observable<User> {
+        return this.http
+            .put(this.userUrl + '/' + this.authGuard.getUserId(), JSON.stringify({
+                name: u.name,
+                username: u.username,
+                phone: u.phone,
+                gender: u.gender,
+                about: u.about
+            }), {headers: this.headers})
+            .map(response => {
+                return response;
+            })
+            .catch(error => this.handleError(error));
     }
 
     private handleError(error: any) {

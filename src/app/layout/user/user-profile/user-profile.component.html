@@ -1,14 +1,11 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'User Profile'" [icon]="'fa-edit'"></app-page-header>
 
-
     <div class="row">
         <div class="col-lg-4">
             <h4>Photo</h4>
             <input type="file" class="form-control-file" id="exampleInputFile">
         </div>
-
-
         <div class="col-lg-4">
             <form role="form" [formGroup]="userForm" (ngSubmit)="update(userForm.value)">
                 <fieldset class="form-group">
@@ -35,10 +32,10 @@
                     <label>{{ 'AboutYou' | translate }}</label>
                     <input class="form-control" formControlName="about" [(ngModel)]="user.about">
                 </fieldset>
-
-
                 <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Update</button>
+                <div *ngIf="error">{{error}}</div>
             </form>
         </div>
     </div>
+
 </div>

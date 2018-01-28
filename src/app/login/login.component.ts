@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
             });
             this.router.navigateByUrl('/dashboard');
         }, (response: Response) => {
-            if (response.status != 200) {
+            if (response.status !== 200) {
                 this.error = 'Incorrect username or password';
             }
         });

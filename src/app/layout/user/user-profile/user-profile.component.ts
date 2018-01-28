@@ -56,7 +56,15 @@ export class UserProfileComponent implements OnInit {
     }
 
     update(u: User) {
-
+        console.log(u);
+        this.userService.updateProfile(u).subscribe((user) => {
+            this.user = user;
+            this.error = 'Update success';
+        }, (response: Response) => {
+            if (response.status !== 200) {
+                this.error = 'Update failed';
+            }
+        });
     }
 
 }
