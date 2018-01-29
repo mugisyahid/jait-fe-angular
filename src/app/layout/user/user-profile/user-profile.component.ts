@@ -7,6 +7,7 @@ import {User} from '../shared/user.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {routerTransition} from '../../../router.animations';
 import {Gender} from '../shared/gender.model';
+import {environment} from '../../../../environments/environment';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class UserProfileComponent implements OnInit {
         new Gender('MALE', 'Male'),
         new Gender('FEMALE', 'Female')
     ];
+    imageUrl: string;
 
     constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router,
                 private userService: UserService, private formBuilder: FormBuilder) {
@@ -43,6 +45,7 @@ export class UserProfileComponent implements OnInit {
 
         this.userService.getProfile(this.authGuard.getUsername()).subscribe((user: User) => {
             this.user = user;
+            this.imageUrl = environment.imageUrl + '/user/' + this.user.imageName;
             if (this.user.gender === 'MALE') {
                 this.selectedGender = this.genders[0];
             } else {

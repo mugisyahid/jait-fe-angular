@@ -5,7 +5,8 @@ export class User {
                 public remark: string,
                 public gender: string,
                 public phone: string,
-                public about: string) {
+                public about: string,
+                public imageName: string) {
     }
 }
 
