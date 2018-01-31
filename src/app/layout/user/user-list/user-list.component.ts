@@ -18,6 +18,8 @@ import {environment} from '../../../../environments/environment';
 })
 export class UserListComponent implements OnInit {
 
+    userList: User[];
+
     constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router,
                 private userService: UserService, private formBuilder: FormBuilder) {
         this.translate.addLangs(['en', 'id']);
@@ -28,7 +30,7 @@ export class UserListComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        this.userService.getUserList().subscribe((users: Array<User>) => this.userList = users);
     }
 
 

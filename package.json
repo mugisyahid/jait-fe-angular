@@ -32,7 +32,6 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.8",
     "@ngx-translate/core": "9.0.1",
     "@ngx-translate/http-loader": "2.0.0",
-    "@swimlane/ngx-datatable": "^11.1.7",
     "@types/jasmine": "2.8.2",
     "@types/jasminewd2": "2.0.3",
     "@types/moment": "^2.13.0",

@@ -42,7 +42,9 @@ export class UserProfileComponent implements OnInit {
             'about': ['', []]
             // 'password': ['', [Validators.required]]
         });
+    }
 
+    ngOnInit() {
         this.userService.getProfile(this.authGuard.getUsername()).subscribe((user: User) => {
             this.user = user;
             this.imageUrl = environment.imageUrl + '/user/' + this.user.imageName;
@@ -52,10 +54,6 @@ export class UserProfileComponent implements OnInit {
                 this.selectedGender = this.genders[1];
             }
         });
-    }
-
-    ngOnInit() {
-
     }
 
     update(u: User) {

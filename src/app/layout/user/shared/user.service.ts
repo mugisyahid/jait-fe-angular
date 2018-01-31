@@ -20,6 +20,15 @@ export class UserService {
         this.headers = new HttpHeaders({'Content-Type': 'application/json'});
     }
 
+    getUserList(): Observable<User[]> {
+        return this.http
+            .get(this.userUrl)
+            .map(response => {
+                return response;
+            })
+            .catch(error => this.handleError(error));
+    }
+
     getProfile(username: string): Observable<User> {
         return this.http
             .post(this.userUrl + AppConfig.endpoints.admin.profile, JSON.stringify({
