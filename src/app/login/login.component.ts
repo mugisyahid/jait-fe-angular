@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (this.authGuard.isLoggedIn()) {
+            this.router.navigateByUrl('/dashboard');
+        }
     }
 
 

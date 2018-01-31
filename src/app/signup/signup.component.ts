@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from './shared/register.service';
 import {Router} from '@angular/router';
 import {Register} from './shared/register.model';
+import {AuthGuard} from '../shared/guard';
 
 @Component({
     selector: 'app-signup',
@@ -16,7 +17,8 @@ export class SignupComponent implements OnInit {
     private registerForm: FormGroup;
     private error: String;
 
-    constructor(public router: Router, private registerService: RegisterService, private formBuilder: FormBuilder) {
+    constructor(private authGuard: AuthGuard, public router: Router, private registerService: RegisterService,
+                private formBuilder: FormBuilder) {
         this.registerForm = this.formBuilder.group({
             'name': ['', [Validators.required]],
             'username': ['', [Validators.required, Validators.email]],
@@ -25,6 +27,9 @@ export class SignupComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (this.authGuard.isLoggedIn()) {
+            this.router.navigateByUrl('/dashboard');
+        }
     }
 
     register(l: Register) {
