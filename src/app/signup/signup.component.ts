@@ -34,10 +34,10 @@ export class SignupComponent implements OnInit {
 
     register(l: Register) {
         this.registerService.register(l).subscribe((user) => {
-            console.log(user);
+            this.router.navigateByUrl('/login');
         }, (response: Response) => {
-            if (response.status != 200) {
-                this.error = 'errorHasOcurred';
+            if (response.status !== 200) {
+                this.error = 'error Has Ocurred';
             }
         });
     }
