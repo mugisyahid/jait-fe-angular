@@ -25,12 +25,13 @@ export class RegisterService {
                 username: l.username,
                 password: l.password,
                 name: l.name,
-                //standard value
-                enabled: false, //admin must approve
+                // standard value
+                enabled: false, // admin must approve
                 accountExpired: false,
                 accountLocked: false,
                 passwordExpired: false,
                 remark: 'new user',
+                imageName: 'user1.png',
                 roles: ['ROLE_CUSTOMER']
             }), {headers: this.headers})
             .map(response => {
