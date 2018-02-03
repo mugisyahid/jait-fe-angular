@@ -25,7 +25,7 @@
             <td>{{user.remark}}</td>
             <td>{{user.about}}</td>
             <td>
-                <div class="card-body">
+                <div class="row">
                     <button type="button" class="btn btn-lg btn-success" (click)="enabledDisabledUser(user.id, i)">{{user.enabled == true ? 'Disable' : 'Enable'}}</button>
                     <button type="button" class="btn btn-lg btn-primary">Edit</button>
                     <button type="button" class="btn btn-lg btn-danger">Delete</button>

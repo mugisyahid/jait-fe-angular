@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
 
     login(l: Login) {
         this.loginService.login(l).subscribe((user) => {
+            this.authGuard.setToken(user.access_token)
             this.userService.getProfile(user.username).subscribe((u: User) => {
                 if (u.enabled) {
                     this.authGuard.setSession(user);

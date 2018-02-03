@@ -32,7 +32,7 @@ export class RegisterService {
                 passwordExpired: false,
                 remark: 'new user',
                 imageName: 'user1.png',
-                roles: ['ROLE_CUSTOMER']
+                roles: [AppConfig.roles.customer]
             }), {headers: this.headers})
             .map(response => {
                 return response;

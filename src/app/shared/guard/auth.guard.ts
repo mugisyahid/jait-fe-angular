@@ -19,10 +19,14 @@ export class AuthGuard implements CanActivate {
     public setSession(authResult) {
         const expiresAt = moment().add(authResult.expires_in, 'second');
         localStorage.setItem('username', authResult.username);
-        localStorage.setItem('token', authResult.access_token);
+        // localStorage.setItem('token', authResult.access_token);
         localStorage.setItem('refresh_token', authResult.refresh_token);
         localStorage.setItem('expires_in', JSON.stringify(expiresAt.valueOf()));
         localStorage.setItem('roles', authResult.roles); // backend will validate its value
+    }
+
+    public setToken(token) {
+        localStorage.setItem('token', token);
     }
 
     public setUserId(userId) {
@@ -60,7 +64,14 @@ export class AuthGuard implements CanActivate {
         return localStorage.getItem('user_id');
     }
 
-    geRoles() {
+    getRoles() {
         return localStorage.getItem('roles');
+    }
+
+    isUserRole(role: string) {
+        console.log(role)
+        console.log(this.getRoles())
+        console.log(this.getRoles().indexOf(role))
+        return this.getRoles().indexOf(role) !== -1;
     }
 }

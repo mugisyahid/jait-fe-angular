@@ -17,5 +17,10 @@ export const AppConfig: IAppConfig = {
             profile: '/profile',
             enableUser: '/enableUser'
         }
+    },
+    roles: {
+        sysadmin: 'ROLE_SYSTEM',
+        admin: 'ROLE_SYSTEM',
+        customer: 'ROLE_CUSTOMER'
     }
 };

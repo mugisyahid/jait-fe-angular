@@ -3,6 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 
 import {AuthGuard} from '../../../shared/guard';
+import {AppConfig} from "../../../config/app.config";
 
 
 @Component({
@@ -11,9 +12,9 @@ import {AuthGuard} from '../../../shared/guard';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-    isActive: boolean = false;
-    showMenu: string = '';
-    pushRightClass: string = 'push-right';
+    isActive = false;
+    showMenu = '';
+    pushRightClass = 'push-right';
 
     constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router) {
         this.translate.addLangs(['en', 'id']);
@@ -70,4 +71,17 @@ export class SidebarComponent {
     onLoggedout() {
         this.authGuard.logout();
     }
+
+    isSysAdmin() {
+        return this.authGuard.isUserRole(AppConfig.roles.sysadmin);
+    }
+
+    isAdmin() {
+        return this.authGuard.isUserRole(AppConfig.roles.admin);
+    }
+
+    isCustomer() {
+        return this.authGuard.isUserRole(AppConfig.roles.customer);
+    }
+
 }

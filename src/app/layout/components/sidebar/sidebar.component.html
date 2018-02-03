@@ -22,7 +22,7 @@
             <i class="fa fa-th-list"></i>&nbsp;{{ 'Component' | translate }}
         </a>
 
-        <div class="nested-menu">
+        <div class="nested-menu" [hidden]="isCustomer()">
             <a class="list-group-item" (click)="addExpandClass('pages')">
                 <span><i class="fa fa-plus"></i>&nbsp; {{ 'User' | translate }}</span>
             </a>
