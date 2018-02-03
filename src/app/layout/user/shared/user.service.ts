@@ -55,12 +55,19 @@ export class UserService {
             .catch(error => this.handleError(error));
     }
 
+    enabledDisabledUser(id: number): Observable<User> {
+        return this.http
+            .put(this.userUrl + AppConfig.endpoints.admin.enableUser, JSON.stringify({id: id}), {headers: this.headers})
+            .map(response => {
+                return response;
+            })
+            .catch(error => this.handleError(error));
+    }
+
     private handleError(error: any) {
         if (error instanceof Response) {
             return Observable.throw(error.json()['error'] || 'backend server error');
         }
         return Observable.throw(error || 'backend server error');
     }
-
-
 }

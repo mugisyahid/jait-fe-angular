@@ -14,8 +14,8 @@ export const AppConfig: IAppConfig = {
         },
         admin: {
             user: '/admin/user',
-            profile: '/profile'
+            profile: '/profile',
+            enableUser: '/enableUser'
         }
-
     }
 };

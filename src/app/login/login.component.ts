@@ -39,11 +39,15 @@ export class LoginComponent implements OnInit {
 
     login(l: Login) {
         this.loginService.login(l).subscribe((user) => {
-            this.authGuard.setSession(user);
-            this.userService.getProfile(this.authGuard.getUsername()).subscribe((u: User) => {
-                this.authGuard.setUserId(u.id);
+            this.userService.getProfile(user.username).subscribe((u: User) => {
+                if (u.enabled) {
+                    this.authGuard.setSession(user);
+                    this.authGuard.setUserId(u.id);
+                    this.router.navigateByUrl('/dashboard');
+                } else {
+                    this.error = 'Your accoutn still disable, Please contact Administrator';
+                }
             });
-            this.router.navigateByUrl('/dashboard');
         }, (response: Response) => {
             if (response.status !== 200) {
                 this.error = 'Incorrect username or password';

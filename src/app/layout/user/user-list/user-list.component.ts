@@ -33,5 +33,15 @@ export class UserListComponent implements OnInit {
         this.userService.getUserList().subscribe((users: Array<User>) => this.userList = users);
     }
 
+    enabledDisabledUser(id: number, i: number) {
+        this.userService.enabledDisabledUser(id).subscribe((user) => {
+            // change user
+            this.userList[i] = user;
+        }, (response: Response) => {
+            if (response.status !== 200) {
+            }
+        });
+
+    }
 
 }
