@@ -5,6 +5,7 @@ import {AuthGuard} from '../../../shared/index';
 import {UserService} from '../shared/user.service';
 import {User} from '../shared/user.model';
 import {FormBuilder} from '@angular/forms';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {routerTransition} from '../../../router.animations';
 import {AppConfig} from '../../../config/app.config';
 
@@ -17,11 +18,15 @@ import {AppConfig} from '../../../config/app.config';
 })
 export class UserListComponent implements OnInit {
 
+    // ui stuff
+    closeResult: string;
+
+    // object
     userList: User[] = new Array();
     deletedUserList: User[] = new Array();
 
     constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router,
-                private userService: UserService, private formBuilder: FormBuilder) {
+                private userService: UserService, private formBuilder: FormBuilder, private modalService: NgbModal) {
         this.translate.addLangs(['en', 'id']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
@@ -41,6 +46,16 @@ export class UserListComponent implements OnInit {
         });
     }
 
+    // ui stuff
+    open(content) {
+        this.modalService.open(content).result.then((result) => {
+            this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+
+    // request stuff
     enabledDisabledUser(id: number, i: number) {
         this.userService.enabledDisabledUser(id).subscribe((user) => {
             // change user
@@ -73,6 +88,16 @@ export class UserListComponent implements OnInit {
             if (response.status !== 200) {
             }
         });
+    }
+
+    private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+            return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        } else {
+            return `with: ${reason}`;
+        }
     }
 
 }

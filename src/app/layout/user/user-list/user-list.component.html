@@ -36,8 +36,24 @@
                                 {{user.enabled == true ? 'Disable' : 'Enable'}}
                             </button>
                             <button type="button" class="btn btn-lg btn-primary" (click)="edit(user.id)">Edit</button>
-                            <button type="button" class="btn btn-lg btn-danger" (click)="delete(user.id, i)">Delete
-                            </button>
+                            <button type="button" class="btn btn-lg btn-danger" (click)="open(content)">Delete</button>
+                            <div>
+                                <ng-template #content let-c="close" let-d="dismiss">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">{{'Delete' | translate}} {{'User' | translate}}</h4>
+                                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{'Delete' | translate}} {{user.name}}?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" (click)="delete(user.id, i);c('Close click');">Ok</button>
+                                        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancel</button>
+                                    </div>
+                                </ng-template>
+                            </div>
                         </div>
                     </td>
                 </tr>
