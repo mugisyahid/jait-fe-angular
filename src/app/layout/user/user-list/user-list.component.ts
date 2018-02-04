@@ -4,10 +4,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {AuthGuard} from '../../../shared/index';
 import {UserService} from '../shared/user.service';
 import {User} from '../shared/user.model';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {routerTransition} from '../../../router.animations';
-import {Gender} from '../shared/gender.model';
-import {environment} from '../../../../environments/environment';
 
 
 @Component({
@@ -41,7 +39,10 @@ export class UserListComponent implements OnInit {
             if (response.status !== 200) {
             }
         });
+    }
 
+    edit(id: number) {
+        this.router.navigateByUrl('/user/profile/' + id);
     }
 
 }

@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
                 if (u.enabled) {
                     this.authGuard.setSession(user);
                     this.authGuard.setUserId(u.id);
+                    this.authGuard.setName(u.name);
                     this.router.navigateByUrl('/dashboard');
                 } else {
                     this.error = 'Your accoutn still disable, Please contact Administrator';

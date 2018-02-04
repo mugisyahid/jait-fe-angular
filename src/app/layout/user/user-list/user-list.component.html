@@ -20,14 +20,14 @@
             <td>{{user.name}}</td>
             <td>{{user.username}}</td>
             <td>{{user.gender}}</td>
-            <td>{{user.registered}}</td>
+            <td>{{user.registered | date:'d MMMM yyyy HH:mm'}}</td>
             <td>{{user.phone}}</td>
             <td>{{user.remark}}</td>
             <td>{{user.about}}</td>
             <td>
                 <div class="row">
                     <button type="button" class="btn btn-lg btn-success" (click)="enabledDisabledUser(user.id, i)">{{user.enabled == true ? 'Disable' : 'Enable'}}</button>
-                    <button type="button" class="btn btn-lg btn-primary">Edit</button>
+                    <button type="button" class="btn btn-lg btn-primary" (click)="edit(user.id)">Edit</button>
                     <button type="button" class="btn btn-lg btn-danger">Delete</button>
                 </div>
             </td>

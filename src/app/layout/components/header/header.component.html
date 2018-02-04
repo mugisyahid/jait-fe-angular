@@ -104,7 +104,7 @@
             <i class="fa fa-user"></i> {{name}} <b class="caret"></b>
         </a>
         <div class="dropdown-menu-right" ngbDropdownMenu>
-            <a class="dropdown-item" [routerLink]="['/user/profile']">
+            <a class="dropdown-item" [routerLink]="['/user/profile', id]">
                 <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}
             </a>
             <a class="dropdown-item" href="javascript:void(0)">

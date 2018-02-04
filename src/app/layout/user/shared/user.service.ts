@@ -40,6 +40,15 @@ export class UserService {
             .catch(error => this.handleError(error));
     }
 
+    getUserById(id: number): Observable<User> {
+        return this.http
+            .get(this.userUrl + '/' + id)
+            .map(response => {
+                return response;
+            })
+            .catch(error => this.handleError(error));
+    }
+
     updateProfile(u: User): Observable<User> {
         return this.http
             .put(this.userUrl + '/' + this.authGuard.getUserId(), JSON.stringify({

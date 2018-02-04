@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
     pushRightClass = 'push-right';
 
     name: string;
+    id: number;
 
     constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router) {
 
@@ -32,7 +33,8 @@ export class HeaderComponent implements OnInit {
             }
         });
 
-        this.name = authGuard.getUsername();
+        this.name = authGuard.getName();
+        this.id = parseInt(authGuard.getUserId(), 10);
     }
 
     ngOnInit() {

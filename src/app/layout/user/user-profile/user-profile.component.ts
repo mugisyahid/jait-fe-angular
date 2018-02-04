@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {AuthGuard} from '../../../shared/index';
 import {UserService} from '../shared/user.service';
@@ -9,7 +9,6 @@ import {routerTransition} from '../../../router.animations';
 import {Gender} from '../shared/gender.model';
 import {environment} from '../../../../environments/environment';
 
-
 @Component({
     selector: 'app-user-profile',
     templateUrl: './user-profile.component.html',
@@ -17,6 +16,7 @@ import {environment} from '../../../../environments/environment';
     animations: [routerTransition()]
 })
 export class UserProfileComponent implements OnInit {
+    id: number;
     user: User;
     userForm: FormGroup;
     error: String;
@@ -27,7 +27,8 @@ export class UserProfileComponent implements OnInit {
     ];
     imageUrl: string;
 
-    constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router,
+    constructor(private authGuard: AuthGuard, private translate: TranslateService, private route: ActivatedRoute,
+                private router: Router,
                 private userService: UserService, private formBuilder: FormBuilder) {
         this.translate.addLangs(['en', 'id']);
         this.translate.setDefaultLang('en');
@@ -42,10 +43,13 @@ export class UserProfileComponent implements OnInit {
             'about': ['', []]
             // 'password': ['', [Validators.required]]
         });
+
+        this.id = this.route.snapshot.params['id'];
+
     }
 
     ngOnInit() {
-        this.userService.getProfile(this.authGuard.getUsername()).subscribe((user: User) => {
+        this.userService.getUserById(this.id).subscribe((user: User) => {
             this.user = user;
             this.imageUrl = environment.imageUrl + '/user/' + this.user.imageName;
             if (this.user.gender === 'MALE') {

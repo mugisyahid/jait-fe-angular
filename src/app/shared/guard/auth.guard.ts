@@ -33,8 +33,13 @@ export class AuthGuard implements CanActivate {
         localStorage.setItem('user_id', userId);
     }
 
+    public setName(name) {
+        localStorage.setItem('name', name);
+    }
+
     logout() {
         localStorage.removeItem('username');
+        localStorage.removeItem('name');
         localStorage.removeItem('token');
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('expires_in');
@@ -60,6 +65,10 @@ export class AuthGuard implements CanActivate {
         return localStorage.getItem('username');
     }
 
+    getName() {
+        return localStorage.getItem('name');
+    }
+
     getUserId() {
         return localStorage.getItem('user_id');
     }
@@ -69,9 +78,6 @@ export class AuthGuard implements CanActivate {
     }
 
     isUserRole(role: string) {
-        console.log(role)
-        console.log(this.getRoles())
-        console.log(this.getRoles().indexOf(role))
         return this.getRoles().indexOf(role) !== -1;
     }
 }
