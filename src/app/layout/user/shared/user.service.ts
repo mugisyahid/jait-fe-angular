@@ -64,6 +64,17 @@ export class UserService {
             .catch(error => this.handleError(error));
     }
 
+    updateStatus(id: number, status: string): Observable<User> {
+        return this.http
+            .put(this.userUrl + '/' + id, JSON.stringify({
+                status: status
+            }), {headers: this.headers})
+            .map(response => {
+                return response;
+            })
+            .catch(error => this.handleError(error));
+    }
+
     enabledDisabledUser(id: number): Observable<User> {
         return this.http
             .put(this.userUrl + AppConfig.endpoints.admin.enableUser, JSON.stringify({id: id}), {headers: this.headers})

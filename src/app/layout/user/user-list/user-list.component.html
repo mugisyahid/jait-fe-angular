@@ -1,37 +1,85 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'User List'" [icon]="'fa-edit'"></app-page-header>
-    <table class="card-body table table-hover table-striped">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Gender</th>
-            <th>Registered</th>
-            <th>Phone</th>
-            <th>Remark</th>
-            <th>About</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let user of userList; let i = index" [attr.data-index]="i">
-            <th scope="row">{{i + 1}}</th>
-            <td>{{user.name}}</td>
-            <td>{{user.username}}</td>
-            <td>{{user.gender}}</td>
-            <td>{{user.registered | date:'d MMMM yyyy HH:mm'}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.remark}}</td>
-            <td>{{user.about}}</td>
-            <td>
-                <div class="row">
-                    <button type="button" class="btn btn-lg btn-success" (click)="enabledDisabledUser(user.id, i)">{{user.enabled == true ? 'Disable' : 'Enable'}}</button>
-                    <button type="button" class="btn btn-lg btn-primary" (click)="edit(user.id)">Edit</button>
-                    <button type="button" class="btn btn-lg btn-danger">Delete</button>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row col-xl-12 col-lg-12">
+        <div class="card mb-3" [hidden]="userList.length === 0">
+            <div class="card-header">
+                Active user
+            </div>
+            <table class="card-body table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Gender</th>
+                    <th>Registered</th>
+                    <th>Phone</th>
+                    <th>Remark</th>
+                    <th>About</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of userList; let i = index" [attr.data-index]="i">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{user.name}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.registered | date:'d MMMM yyyy HH:mm'}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.remark}}</td>
+                    <td>{{user.about}}</td>
+                    <td>
+                        <div class="row">
+                            <button type="button" class="btn btn-lg btn-success"
+                                    (click)="enabledDisabledUser(user.id, i)">
+                                {{user.enabled == true ? 'Disable' : 'Enable'}}
+                            </button>
+                            <button type="button" class="btn btn-lg btn-primary" (click)="edit(user.id)">Edit</button>
+                            <button type="button" class="btn btn-lg btn-danger" (click)="delete(user.id, i)">Delete
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card mb-3" [hidden]="deletedUserList.length === 0">
+            <div class="card-header">
+                Deleted user
+            </div>
+            <table class="card-body table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Gender</th>
+                    <th>Registered</th>
+                    <th>Phone</th>
+                    <th>Remark</th>
+                    <th>About</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of deletedUserList; let i = index" [attr.data-index]="i">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{user.name}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.registered | date:'d MMMM yyyy HH:mm'}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.remark}}</td>
+                    <td>{{user.about}}</td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-primary" (click)="unDelete(user.id, i)">Active
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

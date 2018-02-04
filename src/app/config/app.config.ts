@@ -22,5 +22,9 @@ export const AppConfig: IAppConfig = {
         sysadmin: 'ROLE_SYSTEM',
         admin: 'ROLE_SYSTEM',
         customer: 'ROLE_CUSTOMER'
+    },
+    statuses: {
+        ACTIVE: 'ACTIVE',
+        DELETED: 'DELETED'
     }
 };
