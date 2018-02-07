@@ -24,7 +24,10 @@ export class ImageService {
         console.log(this.url + updateUrl + this.updateImageUrl);
         return this.http
             .post(this.url + updateUrl + this.updateImageUrl, JSON.stringify({
-                id: id
+                id: id,
+                fileName: filename,
+                fileType: filetype,
+                value: value
             }), {headers: this.headers})
             .map(response => {
                 return response;

@@ -73,12 +73,15 @@ export class UserProfileComponent implements OnInit {
     }
 
     update(u: User) {
-        this.userService.updateProfile(u).subscribe((user) => {
+        this.userService.updateProfile(u, this.id).subscribe((user) => {
             this.user = user;
             // update image
             if (this.isChangeImage) {
                 this.isChangeImage = false;
-                this.imageService.updateImage(AppConfig.endpoints.admin.user, this.user.id, this.filename, this.filetype, this.value);
+                this.imageService.updateImage(AppConfig.endpoints.admin.user, this.id, this.filename, this.filetype, this.value)
+                    .subscribe((response) => {
+                        console.log(response);
+                    });
             }
             this.error = 'Update success';
         }, (response: Response) => {
