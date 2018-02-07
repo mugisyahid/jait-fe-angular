@@ -7,7 +7,8 @@ import {User} from '../shared/user.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {routerTransition} from '../../../router.animations';
 import {Gender} from '../shared/gender.model';
-import {environment} from '../../../../environments/environment';
+import {ImageService} from '../../shared/image.service';
+import {AppConfig} from '../../../config/app.config';
 
 @Component({
     selector: 'app-user-profile',
@@ -19,8 +20,15 @@ export class UserProfileComponent implements OnInit {
     id: number;
     user: User;
     userForm: FormGroup;
-    error: String;
+    error: string;
     selectedGender: Gender;
+
+    filename: string;
+    filetype: string;
+    value: string;
+
+    isChangeImage: boolean;
+
     genders = [
         new Gender('MALE', 'Male'),
         new Gender('FEMALE', 'Female')
@@ -28,7 +36,7 @@ export class UserProfileComponent implements OnInit {
     imageUrl: string;
 
     constructor(private authGuard: AuthGuard, private translate: TranslateService, private route: ActivatedRoute,
-                private router: Router,
+                private router: Router, private imageService: ImageService,
                 private userService: UserService, private formBuilder: FormBuilder) {
         this.translate.addLangs(['en', 'id']);
         this.translate.setDefaultLang('en');
@@ -37,7 +45,7 @@ export class UserProfileComponent implements OnInit {
 
         this.userForm = this.formBuilder.group({
             'name': ['', [Validators.required]],
-            'username': ['', [Validators.required, Validators.email]],
+            // 'username': ['', [Validators.required, Validators.email]],
             'gender': ['', []],
             'phone': ['', []],
             'about': ['', []]
@@ -45,13 +53,14 @@ export class UserProfileComponent implements OnInit {
         });
 
         this.id = this.route.snapshot.params['id'];
+        this.filename = '';
+        this.filetype = '';
+        this.value = '';
+        this.isChangeImage = false;
 
-    }
-
-    ngOnInit() {
         this.userService.getUserById(this.id).subscribe((user: User) => {
             this.user = user;
-            this.imageUrl = environment.imageUrl + '/user/' + this.user.imageName;
+            this.imageUrl = user.image[1];
             if (this.user.gender === 'MALE') {
                 this.selectedGender = this.genders[0];
             } else {
@@ -60,15 +69,38 @@ export class UserProfileComponent implements OnInit {
         });
     }
 
+    ngOnInit() {
+    }
+
     update(u: User) {
         this.userService.updateProfile(u).subscribe((user) => {
             this.user = user;
+            // update image
+            if (this.isChangeImage) {
+                this.isChangeImage = false;
+                this.imageService.updateImage(AppConfig.endpoints.admin.user, this.user.id, this.filename, this.filetype, this.value);
+            }
             this.error = 'Update success';
         }, (response: Response) => {
             if (response.status !== 200) {
                 this.error = 'Update failed';
             }
         });
+    }
+
+    fileChange(event) {
+        const reader = new FileReader();
+        if (event.target.files && event.target.files.length > 0) {
+            const file = event.target.files[0];
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                this.isChangeImage = true;
+                this.imageUrl = reader.result;
+                this.filename = file.name;
+                this.filetype = file.type;
+                this.value = reader.result.split(',')[1];
+            };
+        }
     }
 
 }

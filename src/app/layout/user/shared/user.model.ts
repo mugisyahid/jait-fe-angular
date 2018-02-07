@@ -1,5 +1,5 @@
 export class User {
-    constructor(public id: string,
+    constructor(public id: number,
                 public username: string,
                 public name: string,
                 public enabled: boolean,
@@ -9,7 +9,7 @@ export class User {
                 public gender: string,
                 public phone: string,
                 public about: string,
-                public imageName: string) {
+                public image: any) {
     }
 }
 

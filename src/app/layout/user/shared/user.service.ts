@@ -53,7 +53,7 @@ export class UserService {
         return this.http
             .put(this.userUrl + '/' + this.authGuard.getUserId(), JSON.stringify({
                 name: u.name,
-                username: u.username,
+                // username: u.username,
                 phone: u.phone,
                 gender: u.gender,
                 about: u.about

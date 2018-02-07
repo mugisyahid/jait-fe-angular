@@ -6,22 +6,18 @@
             <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name"
+                        <input type="text" class="form-control input-underline input-lg" placeholder="Full Name"
                                formControlName="name">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email"
+                        <input type="text" class="form-control input-underline input-lg" placeholder="Email"
                                formControlName="username">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id=""
+                        <input type="password" class="form-control input-underline input-lg"
                                placeholder="Password" formControlName="password">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id=""
-                               placeholder="Repeat Password">
                     </div>
                 </div>
                 <button class="btn rounded-btn" type="submit" [disabled]="!registerForm.valid"> {{'Register'}}</button>

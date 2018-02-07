@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 import {UserListComponent} from './user-list/user-list.component';
+import {ImageService} from '../shared/image.service';
 
 @NgModule({
     imports: [CommonModule,
@@ -20,7 +21,7 @@ import {UserListComponent} from './user-list/user-list.component';
         NgbModule.forRoot(),
         ReactiveFormsModule],
     declarations: [UserComponent, UserProfileComponent, UserListComponent],
-    providers: [UserService]
+    providers: [UserService, ImageService]
 })
 export class UserModule {
 }

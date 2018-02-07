@@ -17,8 +17,7 @@ export class RequestInterceptor implements HttpInterceptor {
             });
 
             return next.handle(cloned);
-        }
-        else {
+        } else {
             return next.handle(req);
         }
     }
