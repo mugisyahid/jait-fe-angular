@@ -24,12 +24,14 @@
 
         <div class="nested-menu" [hidden]="isCustomer()">
             <a class="list-group-item" (click)="addExpandClass('pages')">
-                <span><i class="fa fa-plus"></i>&nbsp; {{ 'User' | translate }}</span>
+                <span><i class="fa fa-user-circle"></i>&nbsp; {{ 'User' | translate }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/user/list']" [routerLinkActive]="['router-link-active']"><span>{{ 'UserList' | translate }}</span></a>
+                        <a [routerLink]="['/user/list']" [routerLinkActive]="['router-link-active']">
+                            <span><i class="fa fa-user"></i>&nbsp; {{ 'UserList' | translate }}</span>
+                        </a>
                     </li>
                     <li>
                         <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
@@ -40,6 +42,10 @@
                 </ul>
             </li>
         </div>
+
+        <a [routerLink]="['/product/list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-black-tie"></i>&nbsp;{{ 'Product' | translate }}
+        </a>
 
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('pages')">

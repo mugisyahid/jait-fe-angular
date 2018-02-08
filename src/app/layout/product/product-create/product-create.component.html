@@ -1,0 +1,33 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Product List'" [icon]="'fa-th-list'"></app-page-header>
+
+    <div class="col-lg-5">
+        <form role="form" [formGroup]="productForm" (ngSubmit)="create(productForm.value)">
+            <fieldset class="form-group">
+                <label>{{ 'Name' | translate }}</label>
+                <input class="form-control" formControlName="name">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>{{ 'Price' | translate }}</label>
+                <input class="form-control" formControlName="price">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>{{ 'Quantity' | translate }}</label>
+                <input class="form-control" formControlName="quantity">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>{{ 'Description' | translate }}</label>
+                <input class="form-control" formControlName="description">
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-lg-4">
+                    <img width="300px" height="300px" class="user-avatar"/>
+                    <input type="file" class="form-control-file" id="exampleInputFile">
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Create</button>
+            <div *ngIf="error">{{error}}</div>
+        </form>
+    </div>
+
+</div>

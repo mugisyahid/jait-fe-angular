@@ -28,6 +28,22 @@ export class ProductService {
             .catch(error => this.handleError(error));
     }
 
+    createProduct(l: any, userId: string): Observable<any> {
+        return this.http
+            .post(this.productUrl, JSON.stringify({
+                name: l.name,
+                price: l.price,
+                quantity: l.quantity,
+                description: l.description,
+                userId: userId,
+                imageName: 'default.png'
+            }), {headers: this.headers})
+            .map(response => {
+                return response;
+            })
+            .catch(error => this.handleError(error));
+    }
+
     private handleError(error: any) {
         if (error instanceof Response) {
             return Observable.throw(error.json()['error'] || 'backend server error');
