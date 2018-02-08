@@ -28,15 +28,16 @@ export class ProductService {
             .catch(error => this.handleError(error));
     }
 
-    createProduct(l: any, userId: string): Observable<any> {
+    createProduct(l: any, storeId: string): Observable<any> {
         return this.http
             .post(this.productUrl, JSON.stringify({
                 name: l.name,
                 price: l.price,
                 quantity: l.quantity,
                 description: l.description,
-                userId: userId,
-                imageName: 'default.png'
+                storeId: storeId,
+                imageName: 'default.png',
+                productCategoryId: 1 // fix me
             }), {headers: this.headers})
             .map(response => {
                 return response;

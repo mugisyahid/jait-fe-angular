@@ -17,11 +17,6 @@ export class ImageService {
     }
 
     updateImage(updateUrl: string, id: number, filename: string, filetype: string, value: string): Observable<any> {
-        console.log(id);
-        console.log(filetype);
-        console.log(filename);
-        console.log(value);
-        console.log(this.url + updateUrl + this.updateImageUrl);
         return this.http
             .post(this.url + updateUrl + this.updateImageUrl, JSON.stringify({
                 id: id,
