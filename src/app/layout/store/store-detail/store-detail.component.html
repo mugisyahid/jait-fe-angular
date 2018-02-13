@@ -1,0 +1,23 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Store'" [icon]="'fa-th-list'"></app-page-header>
+
+
+    <div class="row">
+        <div class="col-md-12" *ngIf="store">
+            <div align="center">
+                <h4>{{store.name}}</h4>
+                <!-- banner -->
+                <!-- filter product -->
+                <!-- product -->
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="!store">
+            <div align="center">
+                <h4>{{'EmptyStore' | translate}}</h4>
+                <button type="button" class="btn btn-lg btn-info" (click)="createStore()">{{'CreateStore' | translate}}</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>

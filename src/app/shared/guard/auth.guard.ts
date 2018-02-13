@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
 
 import * as moment from 'moment';
+import {AppConfig} from "../../config/app.config";
+import {isUndefined} from "util";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -37,6 +39,10 @@ export class AuthGuard implements CanActivate {
         localStorage.setItem('name', name);
     }
 
+    public setStore(storeId) {
+        localStorage.setItem('store_id', storeId);
+    }
+
     logout() {
         localStorage.removeItem('username');
         localStorage.removeItem('name');
@@ -45,6 +51,7 @@ export class AuthGuard implements CanActivate {
         localStorage.removeItem('expires_in');
         localStorage.removeItem('user_id');
         localStorage.removeItem('roles');
+        localStorage.removeItem('store_id');
     }
 
     public isLoggedIn() {
@@ -80,4 +87,22 @@ export class AuthGuard implements CanActivate {
     isUserRole(role: string) {
         return this.getRoles().indexOf(role) !== -1;
     }
+
+
+    isSysAdmin() {
+        return this.isUserRole(AppConfig.roles.sysadmin);
+    }
+
+    isAdmin() {
+        return this.isUserRole(AppConfig.roles.admin);
+    }
+
+    isCustomer() {
+        return this.isUserRole(AppConfig.roles.customer);
+    }
+
+    isAnonymous() {
+        return isUndefined(this.getRoles());
+    }
+
 }

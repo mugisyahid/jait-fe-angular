@@ -32,24 +32,7 @@ export class ProductListComponent {
 
     }
 
-    isSysAdmin() {
-        return this.authGuard.isUserRole(AppConfig.roles.sysadmin);
-    }
-
-    isAdmin() {
-        return this.authGuard.isUserRole(AppConfig.roles.admin);
-    }
-
-    isCustomer() {
-        return this.authGuard.isUserRole(AppConfig.roles.customer);
-    }
-
-    isAnonymous() {
-        return isUndefined(this.authGuard.getRoles());
-    }
-
     createProduct() {
         this.router.navigateByUrl('/product/create');
     }
-
 }

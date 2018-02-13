@@ -13,9 +13,12 @@ export const AppConfig: IAppConfig = {
             product: '/admin/product' // secured it
         },
         admin: {
+            // user
             user: '/admin/user',
             profile: '/profile',
-            enableUser: '/enableUser'
+            enableUser: '/enableUser',
+            // store
+            store: '/admin/store'
         },
         updateImage: '/updateImage'
     },

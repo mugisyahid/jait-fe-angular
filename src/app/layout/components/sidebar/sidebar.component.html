@@ -43,8 +43,11 @@
             </li>
         </div>
 
-        <a [routerLink]="['/product/list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <!--<a [routerLink]="['/product/list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-black-tie"></i>&nbsp;{{ 'Product' | translate }}
+        </a>-->
+        <a [routerLink]="['/store']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-black-tie"></i>&nbsp;{{ 'Store' | translate }}
         </a>
 
         <div class="nested-menu">

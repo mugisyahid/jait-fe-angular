@@ -1,0 +1,19 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Product List'" [icon]="'fa-th-list'"></app-page-header>
+
+    <div class="col-lg-5">
+        <form role="form" [formGroup]="storeForm" (ngSubmit)="createStore(storeForm.value)">
+            <fieldset class="form-group">
+                <label>{{ 'Name' | translate }}</label>
+                <input class="form-control" formControlName="name">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>{{ 'Description' | translate }}</label>
+                <input class="form-control" formControlName="description">
+            </fieldset>
+            <button type="submit" class="btn btn-primary" [disabled]="!storeForm.valid">Create</button>
+            <div *ngIf="error">{{error}}</div>
+        </form>
+    </div>
+
+</div>
