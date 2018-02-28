@@ -3,12 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from './shared';
 
 const routes: Routes = [
-    //api
+    // api
     {path: 'login', loadChildren: './login/login.module#LoginModule'},
     {path: 'signup', loadChildren: './signup/signup.module#SignupModule'},
+    {path: 'activation/:token', loadChildren: './activation/activation.module#ActivationModule'},
     // { path: 'product', loadChildren: './layout/product/product.module#ProductModule' },
 
-    //secure
+    // secure
     {path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard]},
 
     {path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule'},

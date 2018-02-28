@@ -10,6 +10,7 @@ export const AppConfig: IAppConfig = {
         api: {
             login: '/api/login',
             register: '/register',
+            activate: '/activate',
             product: '/admin/product' // secured it
         },
         admin: {

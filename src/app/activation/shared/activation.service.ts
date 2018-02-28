@@ -3,37 +3,24 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {environment} from '../../../environments/environment';
 import {AppConfig} from '../../config/app.config';
-
-
-import {Register} from './register.model';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class RegisterService {
+export class ActivationService {
     private headers: HttpHeaders;
-    private registerUrl: string;
+    private activationUrl: string;
 
     constructor(private http: HttpClient) {
-        this.registerUrl = environment.url + AppConfig.endpoints.api.register;
+        this.activationUrl = environment.url + AppConfig.endpoints.api.activate;
         this.headers = new HttpHeaders({'Content-Type': 'application/json'});
     }
 
-    register(l: any): Observable<Register> {
+    activate(l: string): Observable<any> {
         return this.http
-            .post(this.registerUrl, JSON.stringify({
-                username: l.username,
-                password: l.password,
-                name: l.name,
-                // standard value
-                enabled: false, // admin must approve
-                accountExpired: false,
-                accountLocked: false,
-                passwordExpired: false,
-                remark: 'new user',
-                imageName: 'user1.png',
-                roles: [AppConfig.roles.customer]
+            .post(this.activationUrl, JSON.stringify({
+                token: l
             }), {headers: this.headers})
             .map(response => {
                 return response;

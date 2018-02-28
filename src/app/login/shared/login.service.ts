@@ -8,6 +8,7 @@ import {AppConfig} from '../../config/app.config';
 import {Login} from './login.model';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LoginService {

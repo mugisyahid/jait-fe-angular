@@ -4,10 +4,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {AppConfig} from '../../../config/app.config';
 
+import {Store} from './store.model';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {Store} from './store.model';
 
 @Injectable()
 export class StoreService {

@@ -14,7 +14,6 @@ import {AuthGuard, RequestInterceptor} from './shared';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-    // for development
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
