@@ -7,8 +7,8 @@ import {ActivationService} from './shared/activation.service';
 @Component({
     selector: 'app-activation',
     templateUrl: './activation.component.html',
-    styleUrls: ['./activation.component.scss'],
-    animations: [routerTransition()]
+    styleUrls: ['./activation.component.scss']
+    // animations: [routerTransition()]
 })
 export class ActivationComponent implements OnInit {
 
