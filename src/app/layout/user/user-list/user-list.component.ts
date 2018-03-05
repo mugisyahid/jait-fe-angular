@@ -14,7 +14,7 @@ import {AppConfig} from '../../../config/app.config';
     selector: 'app-user-list',
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class UserListComponent implements OnInit {
 

@@ -12,7 +12,7 @@ import {AuthGuard} from '../../../shared/guard/auth.guard';
     selector: 'app-product-create',
     templateUrl: './product-create.component.html',
     styleUrls: ['./product-create.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class ProductCreateComponent {
 

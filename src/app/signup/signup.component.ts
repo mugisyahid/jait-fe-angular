@@ -10,12 +10,12 @@ import {AuthGuard} from '../shared/guard';
     selector: 'app-signup',
     templateUrl: './signup.component.html',
     styleUrls: ['./signup.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class SignupComponent implements OnInit {
 
-    private registerForm: FormGroup;
-    private error: String;
+    registerForm: FormGroup;
+    error: String;
 
     constructor(private authGuard: AuthGuard, public router: Router, private registerService: RegisterService,
                 private formBuilder: FormBuilder) {

@@ -5,7 +5,7 @@ import {routerTransition} from '../../router.animations';
     selector: 'app-charts',
     templateUrl: './charts.component.html',
     styleUrls: ['./charts.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class ChartsComponent implements OnInit {
     // bar chart

@@ -7,14 +7,14 @@ import {ActivationService} from './shared/activation.service';
 @Component({
     selector: 'app-activation',
     templateUrl: './activation.component.html',
-    styleUrls: ['./activation.component.scss']
+    styleUrls: ['./activation.component.scss'],
     // animations: [routerTransition()]
 })
 export class ActivationComponent implements OnInit {
 
-    private error: string;
-    private userName: string;
-    private token: string;
+    error: string;
+    userName: string;
+    token: string;
 
     constructor(private authGuard: AuthGuard, public router: Router, private route: ActivatedRoute,
                 private activationService: ActivationService) {

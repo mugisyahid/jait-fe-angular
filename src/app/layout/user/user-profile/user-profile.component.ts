@@ -14,7 +14,7 @@ import {AppConfig} from '../../../config/app.config';
     selector: 'app-user-profile',
     templateUrl: './user-profile.component.html',
     styleUrls: ['./user-profile.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class UserProfileComponent implements OnInit {
     id: number;

@@ -13,7 +13,7 @@ import {isUndefined} from 'util';
     selector: 'app-product-list',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class ProductListComponent {
 

@@ -5,7 +5,7 @@ import {routerTransition} from '../../router.animations';
     selector: 'app-form',
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class FormComponent implements OnInit {
     constructor() {

@@ -5,7 +5,7 @@ import {routerTransition} from '../../router.animations';
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];

@@ -5,7 +5,7 @@ import {routerTransition} from '../../router.animations';
     selector: 'app-product',
     templateUrl: './product.component.html',
     styleUrls: ['./product.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class ProductComponent implements OnInit {
     constructor() {

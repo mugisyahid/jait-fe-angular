@@ -13,12 +13,12 @@ import {User} from '../layout/user/shared/user.model';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
 
-    private loginForm: FormGroup;
-    private error: String;
+    loginForm: FormGroup;
+    error: String;
 
     constructor(public router: Router, private userService: UserService,
                 private loginService: LoginService, private formBuilder: FormBuilder,

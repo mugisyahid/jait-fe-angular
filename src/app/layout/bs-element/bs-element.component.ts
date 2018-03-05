@@ -5,7 +5,7 @@ import {routerTransition} from '../../router.animations';
     selector: 'app-bs-element',
     templateUrl: './bs-element.component.html',
     styleUrls: ['./bs-element.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class BsElementComponent implements OnInit {
     constructor() {

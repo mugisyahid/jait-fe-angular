@@ -12,7 +12,7 @@ import {StoreService} from '../shared/store.service';
     selector: 'app-store-create',
     templateUrl: './store-create.component.html',
     styleUrls: ['./store-create.component.scss'],
-    animations: [routerTransition()]
+    // animations: [routerTransition()]
 })
 export class StoreCreateComponent {
 

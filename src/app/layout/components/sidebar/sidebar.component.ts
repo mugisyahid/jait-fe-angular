@@ -3,7 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 
 import {AuthGuard} from '../../../shared/guard';
-import {AppConfig} from "../../../config/app.config";
+import {AppConfig} from '../../../config/app.config';
 
 
 @Component({
@@ -15,6 +15,7 @@ export class SidebarComponent {
     isActive = false;
     showMenu = '';
     pushRightClass = 'push-right';
+    name: string;
 
     constructor(private authGuard: AuthGuard, private translate: TranslateService, public router: Router) {
         this.translate.addLangs(['en', 'id']);
@@ -31,6 +32,7 @@ export class SidebarComponent {
                 this.toggleSidebar();
             }
         });
+        this.name = this.authGuard.getName();
     }
 
     toProfile() {
