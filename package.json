@@ -9,7 +9,7 @@
     "e2e": "ng e2e",
     "startdev": "ng serve --port 4300 --ec true",
     "postinstall": "ng build --aot -prod",
-    "start": "node www/server.js"
+    "start": "node server.js"
   },
   "private": true,
   "dependencies": {
